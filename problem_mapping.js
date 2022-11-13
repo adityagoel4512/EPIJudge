@@ -150,7 +150,7 @@ problem_mapping = {
                 "total": 7
             },
             "Python: uniform_random_number.py": {
-                "passed": 0,
+                "passed": 7,
                 "total": 7
             }
         },
@@ -180,7 +180,7 @@ problem_mapping = {
                 "total": 1001
             },
             "Python: even_odd_array.py": {
-                "passed": 0,
+                "passed": 1001,
                 "total": 1001
             }
         },
@@ -194,7 +194,7 @@ problem_mapping = {
                 "total": 204
             },
             "Python: dutch_national_flag.py": {
-                "passed": 0,
+                "passed": 204,
                 "total": 204
             }
         },

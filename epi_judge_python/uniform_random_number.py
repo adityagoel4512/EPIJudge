@@ -5,15 +5,23 @@ from test_framework import generic_test
 from test_framework.random_sequence_checker import (
     check_sequence_is_uniformly_random, run_func_with_retries)
 from test_framework.test_utils import enable_executor_hook
-
+import math
 
 def zero_one_random():
     return random.randrange(2)
 
 
 def uniform_random(lower_bound: int, upper_bound: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    num_trials = math.ceil(math.log2(upper_bound-lower_bound+1))
+    bin_num = 0
+    for _ in range(num_trials):
+        bin_num = (bin_num << 1) + zero_one_random()
+    result = bin_num+lower_bound
+    
+    # [3,5] => 2
+    # XY 11
+    
+    return result if result <= upper_bound else uniform_random(lower_bound, upper_bound)
 
 
 @enable_executor_hook
