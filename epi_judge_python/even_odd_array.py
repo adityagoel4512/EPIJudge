@@ -43,5 +43,5 @@ def even_odd_wrapper(executor, A):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main('even_odd_array.py',
+        generic_test.generic_test_main('even_eodd_array.py',
                                        'even_odd_array.tsv', even_odd_wrapper))
