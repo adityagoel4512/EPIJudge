@@ -1,6 +1,7 @@
 import collections
 import functools
 import math
+import random
 from typing import List
 
 from test_framework import generic_test
@@ -10,8 +11,28 @@ from test_framework.test_utils import enable_executor_hook
 
 def nonuniform_random_number_generation(values: List[int],
                                         probabilities: List[float]) -> int:
-    # TODO - you fill in here.
-    return 0
+    acc = [0]
+    for prob in probabilities:
+        acc.append(prob + acc[-1])
+    
+    r = random.random()
+
+    L = 0
+    R = len(acc)-1
+
+    while L <= R:
+        M = (L+R)//2
+        if acc[M] <= r < acc[M+1]:
+            # found range
+            return values[M]
+        elif r < acc[M]:
+            R = M-1
+        else:
+            # r > acc[M]
+            L = M+1
+
+
+    return -1
 
 
 @enable_executor_hook

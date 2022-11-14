@@ -7,7 +7,20 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def rearrange(A: List[int]) -> None:
-    # TODO - you fill in here.
+    # 1. sort, then swap in second half elems for front
+    # 2. partition below and above median elem, then swap correctly so larger half elems make up even index elems
+    # 3. at A[i]: if i is odd => if A[i] >= A[i-1] then i+=1 else swap(i, i-1) so now A[i] > A[i-1], i+=1, guarantees ordering up and down before maintained as prev, A[i-1] <= A[i-2] and A[i] < A[i-1] so A[i] <= A[i-2] maintaining ordering
+    def swap(i, j):
+        A[i], A[j] = A[j], A[i]
+
+    for i in range(1, len(A)):
+        if i & 1:
+            if A[i] < A[i-1]:
+                swap(i, i-1)
+        else:
+            if A[i] > A[i-1]:
+                swap(i, i-1)
+
     return
 
 

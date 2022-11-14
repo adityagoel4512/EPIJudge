@@ -1,6 +1,7 @@
 import copy
 import functools
 import math
+import random
 from typing import List
 
 from test_framework import generic_test
@@ -8,10 +9,15 @@ from test_framework.random_sequence_checker import (
     check_sequence_is_uniformly_random, run_func_with_retries)
 from test_framework.test_utils import enable_executor_hook
 
+def random_sampling(A: List[int], k: int) -> None:
+    for i in range(k):
+        r = random.randint(i, len(A)-1)
+        A[i], A[r] = A[r], A[i]
 
 def compute_random_permutation(n: int) -> List[int]:
-    # TODO - you fill in here.
-    return []
+    A = list(range(n))
+    random_sampling(A, len(A))
+    return A
 
 
 @enable_executor_hook

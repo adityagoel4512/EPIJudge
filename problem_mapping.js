@@ -278,7 +278,7 @@ problem_mapping = {
                 "total": 402
             },
             "Python: buy_and_sell_stock_twice.py": {
-                "passed": 0,
+                "passed": 402,
                 "total": 402
             }
         },
@@ -292,7 +292,7 @@ problem_mapping = {
                 "total": 203
             },
             "Python: alternating_array.py": {
-                "passed": 0,
+                "passed": 203,
                 "total": 203
             }
         },
@@ -320,7 +320,7 @@ problem_mapping = {
                 "total": 101
             },
             "Python: apply_permutation.py": {
-                "passed": 0,
+                "passed": 101,
                 "total": 101
             }
         },
@@ -334,7 +334,7 @@ problem_mapping = {
                 "total": 2001
             },
             "Python: next_permutation.py": {
-                "passed": 0,
+                "passed": 2001,
                 "total": 2001
             }
         },
@@ -376,7 +376,7 @@ problem_mapping = {
                 "total": 6
             },
             "Python: random_permutation.py": {
-                "passed": 0,
+                "passed": 6,
                 "total": 6
             }
         },
@@ -404,7 +404,7 @@ problem_mapping = {
                 "total": 10
             },
             "Python: nonuniform_random_number.py": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             }
         },
@@ -432,7 +432,7 @@ problem_mapping = {
                 "total": 51
             },
             "Python: spiral_ordering.py": {
-                "passed": 0,
+                "passed": 51,
                 "total": 51
             }
         },
