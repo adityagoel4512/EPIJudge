@@ -8,7 +8,7 @@ from test_framework.test_utils import enable_executor_hook
 import math
 
 def zero_one_random():
-    return random.randrange(2)
+    return random.randrange(2) 
 
 
 def uniform_random(lower_bound: int, upper_bound: int) -> int:

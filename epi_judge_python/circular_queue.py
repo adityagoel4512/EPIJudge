@@ -4,20 +4,42 @@ from test_framework.test_failure import TestFailure
 
 class Queue:
     def __init__(self, capacity: int) -> None:
-        # TODO - you fill in here.
+        self._size = 0
+        self._data = [None] * capacity
+        self._front = 0 # index to dequeue from (first inserted element)
+        self._back = 0 # index to enqueue at (first after used idxes)
         return
 
     def enqueue(self, x: int) -> None:
-        # TODO - you fill in here.
+        if self.size() == len(self._data):
+            new_arr = [None] * (len(self._data) * 2)
+            idx = 0
+            for i in range(self._front, len(self._data)):
+                new_arr[idx] = self._data[i]
+                idx += 1
+            for i in range(0, self._front):
+                new_arr[idx] = self._data[i]
+                idx += 1
+            
+            self._front = 0
+            self._back = len(self._data)
+
+            # dynamic reallocation
+            self._data = new_arr
+        
+        self._data[self._back] = x
+        self._back = (self._back + 1) % len(self._data)
+        self._size += 1
         return
 
     def dequeue(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        data = self._data[self._front]
+        self._front = (self._front + 1) % len(self._data)
+        self._size -= 1
+        return data
 
     def size(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        return self._size
 
 
 def queue_tester(ops):

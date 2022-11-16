@@ -8,8 +8,30 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def has_cycle(head: ListNode) -> Optional[ListNode]:
-    # TODO - you fill in here.
-    return None
+    # floyd cycle detection algorithm
+    if head is None or head.next is None:
+        return None
+
+    slow = head
+    fast = head
+
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+
+        if fast is slow:
+            break
+    
+    if fast is None or fast.next is None:
+        return None
+
+    # fast is slow
+    # can also just advance iter from head by Cycle size since we can expect first eq node with this offset to be at cycle beginning
+    slow = head
+    while slow is not fast:
+        slow = slow.next
+        fast = fast.next
+    return slow
 
 
 @enable_executor_hook
