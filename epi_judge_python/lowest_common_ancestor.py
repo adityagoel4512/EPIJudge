@@ -1,5 +1,5 @@
 import functools
-from typing import Optional
+from typing import Optional, Tuple
 
 from binary_tree_node import BinaryTreeNode
 from test_framework import generic_test
@@ -10,8 +10,33 @@ from test_framework.test_utils import enable_executor_hook
 
 def lca(tree: BinaryTreeNode, node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
-    # TODO - you fill in here.
-    return None
+    
+    # tree so we visit each node once
+    def dfs(node: BinaryTreeNode) -> Tuple[bool, int]:
+
+        if node is None:
+            return None, 0
+
+        # returns tuple with [result, number_found] results
+        resLeft, numLeft = dfs(node.left)
+        if resLeft is not None:
+            return resLeft, numLeft
+        resRight, numRight = dfs(node.right)
+        if resRight:
+            return resRight, numRight
+
+        numFound = numLeft + numRight
+        if node is node0:
+            numFound += 1
+        if node is node1:
+            numFound += 1
+        
+        if numFound == 2:
+            return node, numFound
+        else:
+            return None, numFound
+            
+    return dfs(tree)[0]
 
 
 @enable_executor_hook

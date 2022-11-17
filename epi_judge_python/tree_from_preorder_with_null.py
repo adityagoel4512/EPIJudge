@@ -7,8 +7,18 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def reconstruct_preorder(preorder: List[int]) -> BinaryTreeNode:
-    # TODO - you fill in here.
-    return BinaryTreeNode()
+
+    def helper(idx: int):
+        if preorder[idx] is None:
+            return None, idx+1
+        else:
+            root = BinaryTreeNode(data=preorder[idx])
+            root.left, idx = helper(idx+1)
+            root.right, idx = helper(idx)
+            return root, idx
+
+    result, _ = helper(0)
+    return result
 
 
 @enable_executor_hook

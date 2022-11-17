@@ -11,9 +11,45 @@ class BinaryTreeNode:
         self.right = None
         self.next = None  # Populates this field.
 
+def sibling_iterator(node: BinaryTreeNode):
+    while node is not None:
+        yield node
+        node = node.next
 
 def construct_right_sibling(tree: BinaryTreeNode) -> None:
-    # TODO - you fill in here.
+    # need to tie left most at each level in right subtree with right most at each level in left subtree
+    # return leftmost
+    # F(node):
+    #  leftmostright = F(node.right)
+
+    cur_level_head = tree 
+
+    """
+    BST with pointers/linked list inside the tree itself
+    """
+
+    while cur_level_head is not None:
+
+        next_level_head = None
+        next_level_tail = None
+
+        def append_to_next_level(node: BinaryTreeNode):
+            nonlocal next_level_head
+            nonlocal next_level_tail
+            if next_level_head is None:
+                next_level_head = node 
+                next_level_tail = node
+            else:
+                next_level_tail.next = node
+                next_level_tail = next_level_tail.next
+
+        for parent in sibling_iterator(cur_level_head):
+            if parent.left is not None:
+                append_to_next_level(parent.left)
+            if parent.right is not None:
+                append_to_next_level(parent.right)
+        cur_level_head = next_level_head
+
     return
 
 

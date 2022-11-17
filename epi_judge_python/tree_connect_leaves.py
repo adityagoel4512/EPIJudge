@@ -8,8 +8,20 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def create_list_of_leaves(tree: BinaryTreeNode) -> List[BinaryTreeNode]:
-    # TODO - you fill in here.
-    return []
+    result = []
+    def dfs(node: BinaryTreeNode):
+        nonlocal result
+        if node is None:
+            return
+        elif node.left is None and node.right is None:
+            result.append(node)
+        else:
+            # at least one of these subtrees must exist
+            dfs(node.left)
+            dfs(node.right)
+
+    dfs(tree)
+    return result
 
 
 @enable_executor_hook
