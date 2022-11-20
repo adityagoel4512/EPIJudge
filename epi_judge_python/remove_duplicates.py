@@ -16,7 +16,18 @@ class Name:
 
 
 def eliminate_duplicate(A: List[Name]) -> None:
-    # TODO - you fill in here.
+    A.sort()
+    write_idx = 1
+    # write_idx is the position of the next duplicate to write over with distinct elem
+    for read_idx in range(1, len(A)):
+        if A[read_idx].first_name != A[read_idx-1].first_name:
+            A[write_idx] = A[read_idx]
+            write_idx += 1
+        # write index doesn't progress if same first name
+
+    # pop extras
+    for _ in range(len(A)-write_idx):
+        A.pop()
     return
 
 

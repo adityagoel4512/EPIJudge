@@ -10,7 +10,34 @@ Person = collections.namedtuple('Person', ('age', 'name'))
 
 
 def group_by_age(people: List[Person]) -> None:
-    # TODO - you fill in here.
+    age_count = collections.defaultdict(int)
+    for person in people:
+        age_count[person.age] += 1
+    indices = {}
+
+    cumulative_indices = 0
+    for age, count in age_count.items():
+        indices[age] = {'cur': cumulative_indices, 'end': cumulative_indices+count}
+        cumulative_indices += count
+
+    for age, age_indices in indices.items():
+        print(age, age_indices)
+        
+        # swap until loop or we have managed to get person with appropriate index
+        while age_indices['cur'] < age_indices['end']:
+            cur = age_indices['cur']
+            person = people[cur]
+            if person.age != age:
+                # swap into next available index
+                print('swap', list(indices), person.age)
+                print('val', indices[person.age])
+                dest_index = indices[person.age]['cur']
+                person[dest_index], person[cur] = person[cur], person[dest_index]
+            else:
+                print('here', age_indices['cur'])
+                age_indices['cur'] += 1
+
+        # people[indices['cur']] == indices['end'] (done with this section) or 
     return
 
 

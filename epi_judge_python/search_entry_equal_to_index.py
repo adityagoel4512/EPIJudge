@@ -7,8 +7,27 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def search_entry_equal_to_its_index(A: List[int]) -> int:
-    # TODO - you fill in here.
-    return 0
+    # A has unique entries
+    """
+    A = [-2,-1,0,0,2,2,3]
+    L = 0
+    R = 6
+    M = 3
+    """
+    L = 0
+    R = len(A)-1
+    while L <= R:
+        M = L + (R-L)//2
+        if A[M] == M:
+            return M
+        elif A[M] > M:
+            # means that for all i > M, A[i] > i by uniqueness of A
+            R = M-1
+        else:
+            # A[M] < M
+            # means that for all i < M, by uniqueness A[i] < i
+            L = M+1
+    return -1
 
 
 @enable_executor_hook
