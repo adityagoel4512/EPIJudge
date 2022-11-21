@@ -2,8 +2,13 @@ from test_framework import generic_test
 
 
 def fibonacci(n: int) -> int:
-    # TODO - you fill in here.
-    return -1
+    fib0 = 0
+    if n == 0:
+        return fib0
+    fib1 = 1
+    for _ in range(n-1):
+        fib0, fib1 = fib1, fib0+fib1
+    return fib1
 
 
 if __name__ == '__main__':
