@@ -5,8 +5,18 @@ from test_framework import generic_test
 
 
 def find_first_greater_than_k(tree: BstNode, k: int) -> Optional[BstNode]:
-    # TODO - you fill in here.
-    return None
+    cur = tree
+    result = None
+    while cur is not None:
+        if cur.data <= k:
+            # less than or equal to k, move right to find larger
+            cur = cur.right
+        else:
+            # cur.data > k
+            result = cur
+            cur = cur.left
+
+    return result
 
 
 def find_first_greater_than_k_wrapper(tree, k):

@@ -1,11 +1,23 @@
 from typing import List
-
 from test_framework import generic_test
 
 
 def find_closest_elements_in_sorted_arrays(sorted_arrays: List[List[int]]
                                            ) -> int:
-    # TODO - you fill in here.
+    """
+    brute force:
+    check each possible triple O(mnp)
+
+    improvement 1:
+    use sortedness: next candidate is num array with smallest
+
+    if we have a, b, c candidate with a <= b <= c, then: 
+        - no point increasing c as this will increase closeness
+        - no point varying b
+        - increasing a would improve things while it's minimum
+    new minimum will do the same
+    """
+
     return 0
 
 
